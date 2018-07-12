@@ -85,7 +85,7 @@ Methods UpdateRadar and UpdateLidar are executed with radar and lidar data under
 ### Your Kalman Filter algorithm first predicts then updates.
  Prediction method is from line 156 to line 294.(ukf.cpp)
  
-###Your Kalman Filter can handle radar and lidar measurements
+### Your Kalman Filter can handle radar and lidar measurements
 Line 300 to 493 are radar and lidar measurements.(ukf.cpp)
 
 
