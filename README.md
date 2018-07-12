@@ -60,33 +60,32 @@ OUTPUT: values provided by the c++ program to the simulator
 4. Run it: `./UnscentedKF` Previous versions use i/o from text files.  The current state uses i/o
 from the simulator.
 
-## Editor Settings
+## Results:(Dataset 1)
+We can see the result. Compare the RMSE, UKF is better than EKF.
 
-We've purposefully kept editor configuration files out of this repo in order to
-keep it as simple and environment agnostic as possible. However, we recommend
-using the following settings:
+### UKF
+	RMSE (px,py,vx,vy)=(0.0691, 0.0826, 0.3375, 0.2195)> [.09, .10, .40, .30]
 
-* indent using spaces
-* set tab width to 2 spaces (keeps the matrices in source code aligned)
+![](images/ukf.png)
 
-## Code Style
+### EKF
+	RMSE (px,py,vx,vy)=(0.0974, 0.0855, 0.4517, 0.4404)< [.11, .11, 0.52, 0.52]
+ 
+![](images/ekf.png) 
 
-Please stick to [Google's C++ style guide](https://google.github.io/styleguide/cppguide.html) as much as possible.
+## Follows the Correct Algorithm
 
-## Generating Additional Data
+### Your Sensor Fusion algorithm follows the general processing flow as taught in the preceding lessons.
+UKF main process(ProcessMeasurement method) implements in src/ukf.cpp , Predition method is for predition.
+Methods UpdateRadar and UpdateLidar are executed with radar and lidar data under measure update.
 
-This is optional!
+### Your Kalman Filter algorithm handles the first measurements appropriately.
+ ProcessMeasurement is from line 88 to line 149.(ukf.cpp)
+ 
+### Your Kalman Filter algorithm first predicts then updates.
+ Prediction method is from line 156 to line 294.(ukf.cpp)
+ 
+###Your Kalman Filter can handle radar and lidar measurements
+Line 300 to 493 are radar and lidar measurements.(ukf.cpp)
 
-If you'd like to generate your own radar and lidar data, see the
-[utilities repo](https://github.com/udacity/CarND-Mercedes-SF-Utilities) for
-Matlab scripts that can generate additional data.
-
-## Project Instructions and Rubric
-
-This information is only accessible by people who are already enrolled in Term 2
-of CarND. If you are enrolled, see [the project page](https://classroom.udacity.com/nanodegrees/nd013/parts/40f38239-66b6-46ec-ae68-03afd8a601c8/modules/0949fca6-b379-42af-a919-ee50aa304e6a/lessons/c3eb3583-17b2-4d83-abf7-d852ae1b9fff/concepts/f437b8b0-f2d8-43b0-9662-72ac4e4029c1)
-for instructions and the project rubric.
-
-## How to write a README
-A well written README file can enhance your project and portfolio.  Develop your abilities to create professional README files by completing [this free course](https://www.udacity.com/course/writing-readmes--ud777).
 
